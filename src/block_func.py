@@ -1,6 +1,6 @@
 import re
 from enum import Enum
-from htmlnode import HTMLNode, LeafNode, ParentNode
+from htmlnode import ParentNode
 from textnode import TextNode, TextType, text_to_textnodes, text_node_to_html_node
 
 class BlockType(Enum):
@@ -113,7 +113,6 @@ def markdown_to_html_node(markdown):
             node = text_node_to_html_node(text_node)
             html_node = ParentNode("pre",children=[node])
 
-            # ... etc for quote, unordered_list, ordered_list
         elif type == BlockType.QUOTE:
             text = block.replace("> ","")
             text = text.replace("\n"," ")
